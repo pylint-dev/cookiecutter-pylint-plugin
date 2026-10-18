@@ -1,0 +1,10 @@
+[dependency-groups]
+test = [
+  "cookiecutter>=2.6",
+  "pylint[testutils]>=4,<5",
+  "pytest>=8",
+  "pytest-cookies>=0.7",
+]
+
+[tool.pytest.ini_options]
+testpaths = [ "tests" ]

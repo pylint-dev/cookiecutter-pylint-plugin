@@ -1,0 +1,22 @@
+{
+  "full_name": "Your Name",
+  "email": "you@example.com",
+  "github_username": "your-github-username",
+  "plugin_name": "pylint-my-checks",
+  "module_name": "{{ cookiecutter.plugin_name | lower | replace('-', '_') }}",
+  "check_name": "my-check",
+  "short_description": "A pylint plugin with my own checks.",
+  "message_id_prefix": "99",
+  "license": [
+    "MIT",
+    "GPL-2.0-or-later"
+  ],
+  "__checker_module": "{{ cookiecutter.check_name | replace('-', '_') }}",
+  "__checker_class": "{{ cookiecutter.check_name.replace('-', ' ').replace('_', ' ').title().replace(' ', '') }}Checker",
+  "__prompts__": {
+    "plugin_name": "Name of the plugin on PyPI",
+    "module_name": "Name of the Python package, used with --load-plugins",
+    "message_id_prefix": "Two digits between 51 and 99 used in your message ids (W<prefix>01)",
+    "check_name": "Name of your first check, it is also the symbol of its message (my-check)"
+  }
+}
