@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
 from _pytest.config import Config
@@ -41,11 +42,16 @@ from pylint.testutils.functional import (
 )
 from pylint.testutils.lint_module_test import LintModuleTest
 
+if TYPE_CHECKING:
+    from pylint.lint import PyLinter
+
 FUNCTIONAL_DIR = Path(__file__).parent.resolve() / "functional"
 
 
 class _LoadPluginMixin:  # pylint: disable=too-few-public-methods
     """Load the plugin into the linter used by the test."""
+
+    _linter: PyLinter
 
     def __init__(self, test_file: FunctionalTestFile, config: Config | None = None) -> None:
         super().__init__(test_file, config)  # type: ignore[call-arg]

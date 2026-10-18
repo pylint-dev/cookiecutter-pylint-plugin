@@ -53,7 +53,7 @@ def test_check_name_gives_module_and_class(cookies):
     assert result.exit_code == 0, result.exception
     checker = (result.project_path / "pylint_my_checks" / "z_combobulator.py").read_text()
     assert "class ZCombobulatorChecker(BaseChecker):" in checker
-    assert '    def visit_while(self, node: nodes.While) -> None:' in checker
+    assert "    def visit_while(self, node: nodes.While) -> None:" in checker
     init = (result.project_path / "pylint_my_checks" / "__init__.py").read_text()
     assert "linter.register_checker(ZCombobulatorChecker(linter))" in init
 
@@ -78,7 +78,9 @@ def test_generated_tests_pass(cookies, license_name):
 def test_example_raises_its_message(cookies):
     result = cookies.bake(extra_context={"check_name": "z-combobulator"})
     assert result.exit_code == 0, result.exception
-    functional = result.project_path / "tests" / "functional" / "z_combobulator" / "z_combobulator.py"
+    functional = (
+        result.project_path / "tests" / "functional" / "z_combobulator" / "z_combobulator.py"
+    )
     expected = functional.with_suffix(".txt")
     assert expected.read_text() == "z-combobulator:4:0:5:15::Used `while` loop:UNDEFINED\n"
 
@@ -102,7 +104,9 @@ def test_message_id_prefix_must_be_for_plugins(cookies, prefix):
     assert result.exit_code != 0
 
 
-@pytest.mark.parametrize("check_name", ["Z-combobulator", "my_check", "-z-combobulator", "apple2", "z"])
+@pytest.mark.parametrize(
+    "check_name", ["Z-combobulator", "my_check", "-z-combobulator", "apple2", "z"]
+)
 def test_check_name_must_be_a_symbol(cookies, check_name):
     result = cookies.bake(extra_context={"check_name": check_name})
 

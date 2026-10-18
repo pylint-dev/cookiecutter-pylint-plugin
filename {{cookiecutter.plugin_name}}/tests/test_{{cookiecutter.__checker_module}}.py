@@ -23,6 +23,7 @@ get. Use unit tests for small cases you want to check quickly.
 from __future__ import annotations
 
 import astroid
+from astroid import nodes
 from pylint import testutils
 
 from {{ cookiecutter.module_name }}.{{ cookiecutter.__checker_module }} import {{ cookiecutter.__checker_class }}
@@ -54,6 +55,7 @@ class Test{{ cookiecutter.__checker_class }}(testutils.CheckerTestCase):
                 apples += 1
             """
         )
+        assert isinstance(while_node, nodes.While)
         with self.assertAddsMessages(
             testutils.MessageTest(
                 "{{ cookiecutter.check_name }}",

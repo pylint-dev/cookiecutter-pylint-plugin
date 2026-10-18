@@ -13,7 +13,10 @@ if not re.fullmatch(r"[a-z_][a-z0-9_]*", MODULE_NAME):
 # The check name is the message symbol, and gives the module and class names.
 # Functional tests only find symbols made of lower case letters and "-".
 if not re.fullmatch(r"[a-z]+(-[a-z]+)*", CHECK_NAME) or len(CHECK_NAME) < 2:
-    sys.exit(f"'{CHECK_NAME}' must be lower case words joined by '-', without digits, like 'no-rotten-apple'.")
+    sys.exit(
+        f"'{CHECK_NAME}' must be lower case words joined by '-', without digits,"
+        " like 'no-rotten-apple'."
+    )
 
 # 51-99 is reserved for plugins, see
 # https://pylint.readthedocs.io/en/latest/development_guide/how_tos/custom_checkers.html

@@ -15,10 +15,16 @@ classifiers = [
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Software Development :: Quality Assurance",
 ]
-dependencies = [ "pylint>=4,<5" ]
 dynamic = [ "version" ]
+dependencies = [ "pylint>=4,<5" ]
 urls.Source = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.plugin_name }}"
 
 [dependency-groups]
@@ -29,10 +35,14 @@ packages = [ "{{ cookiecutter.module_name }}" ]
 
 [tool.setuptools_scm]
 
-[tool.pytest.ini_options]
-testpaths = [ "tests" ]
-addopts = "--strict-markers"
-
 [tool.ruff]
 line-length = 100
 lint.select = [ "B", "E", "F", "I", "UP", "W" ]
+
+[tool.codespell]
+# astroid is the library pylint uses to read your code.
+ignore-words-list = "astroid"
+
+[tool.pytest]
+ini_options.testpaths = [ "tests" ]
+ini_options.addopts = "--strict-markers"
