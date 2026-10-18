@@ -25,9 +25,8 @@ load-plugins = ["{{ cookiecutter.module_name }}"]
 
 ## Messages
 
-| Id | Symbol | What it means |
-|----|--------|---------------|
-| W{{ cookiecutter.message_id_prefix }}01 | `{{ cookiecutter.check_name }}` | A `while` loop is used. This is an example to replace with your own check. |
+- `W{{ cookiecutter.message_id_prefix }}01` (`{{ cookiecutter.check_name }}`): a `while` loop is used. This is an example to
+  replace with your own check.
 
 ## Develop
 

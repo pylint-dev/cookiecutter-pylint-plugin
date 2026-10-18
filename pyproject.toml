@@ -8,3 +8,7 @@ test = [
 
 [tool.pytest.ini_options]
 testpaths = [ "tests" ]
+
+[tool.ruff]
+line-length = 100
+lint.select = [ "B", "E", "F", "I", "UP", "W" ]
