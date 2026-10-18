@@ -1,0 +1,1 @@
+{{ cookiecutter.check_name }}:4:0:5:15::Used `while` loop:UNDEFINED
